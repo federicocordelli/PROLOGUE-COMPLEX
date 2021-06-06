@@ -96,8 +96,8 @@ function draw() {
   textAlign(CENTER);
   textFont(intlBol);
   textSize(50);
-  text(click,width/2,50);
-  text(karma,width/2,height-50);
+  // text(click,width/2,50);
+  // text(karma,width/2,height-50);
 
   if (click===0){
     push();
@@ -576,7 +576,7 @@ if (click===21) {
   push();
   rectMode(CENTER,CENTER);
   fill('yellow');
-  rect(width/2,height/2,800,150);
+  rect(width/2,height/2,600,100);
   pop();
 
   push();
@@ -584,7 +584,7 @@ if (click===21) {
   textAlign(CENTER,CENTER);
   textFont(intlMed);
   textSize(20);
-  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are; \n\n‘cause a good strategy makes the difference between life and death.",width/2,height/2);
+  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are;",width/2,height/2);
   pop();
 }
 
@@ -596,7 +596,7 @@ if (click===22) {
   push();
   rectMode(CENTER,CENTER);
   fill('yellow');
-  rect(width/2,height/2,800,150);
+  rect(width/2,height/2,600,100);
   pop();
 
   push();
@@ -604,7 +604,7 @@ if (click===22) {
   textAlign(CENTER,CENTER);
   textFont(intlMed);
   textSize(20);
-  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are; \n\n‘cause a good strategy makes the difference between life and death.",width/2,height/2);
+  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are;",width/2,height/2);
   pop();
 }
 
@@ -616,7 +616,7 @@ if (click===23) {
   push();
   rectMode(CENTER,CENTER);
   fill('yellow');
-  rect(width/2,height/2,800,150);
+  rect(width/2,height/2,800,70);
   pop();
 
   push();
@@ -624,7 +624,7 @@ if (click===23) {
   textAlign(CENTER,CENTER);
   textFont(intlMed);
   textSize(20);
-  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are; \n\n‘cause a good strategy makes the difference between life and death.",width/2,height/2);
+  text("‘cause a good strategy makes the difference between life and death.",width/2,height/2);
   pop();
 }
 
@@ -1113,11 +1113,24 @@ if (click===53) {
 }
 
 if (end===1) {
-  fill('yellow');
-  textAlign(CENTER);
-  textFont(intlBol);
-  textSize(50);
-  text("DAJE",width/2,height/2);
+  // fill('yellow');
+  // textAlign(CENTER);
+  // textFont(intlBol);
+  // textSize(50);
+  // text("DAJE",width/2,height/2);
+  if (karma < 0) {
+    fill('yellow');
+    textAlign(CENTER);
+    textFont(intlBol);
+    textSize(50);
+    text("ECOCENTRIC POINT OF VIEW",width/2,height/2);
+  } else if (karma > 0) {
+    fill('yellow');
+    textAlign(CENTER);
+    textFont(intlBol);
+    textSize(50);
+    text("ANTHROPOCENTRIC POINT OF VIEW",width/2,height/2);
+  }
 }
 //PARENTESI FINE DRAW
 }
