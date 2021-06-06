@@ -1127,7 +1127,8 @@ function mouseClicked() {
 }
 
 function homy() {
-  document.location.reload();
+  // document.location.reload();
+  window.open("https://federicocordelli.github.io/HOME-COMPLEX/");
   // window.open();
 }
 
