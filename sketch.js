@@ -18,17 +18,28 @@ var o1 = 0;
 var o2 = 0;
 var karma = 0;
 var end = 0;
+//variabili dei testi
+var pink = '#f56c63';
+var blackblu = "#001110";
+var lime = '#b9c990';
+var textSize1 = 20;
+var textSize2 = 25;
+var textSize3 = 30;
+
+
 
 
 
 function preload() {
 
+
   intlMed = loadFont('addons/SuisseIntl-Medium.otf');
   intlReg = loadFont('addons/SuisseIntl-Regular.otf');
   intlBol = loadFont('addons/SuisseIntl-Bold.otf');
   druk = loadFont('addons/DrukCond-Super.ttf');
+  gtMono = loadFont('addons/SuisseIntlMono-Bold.otf');
 
-  for (var i=1; i<48; i++) {
+  for (var i=1; i<52; i++) {
     imagesOk[i] = loadImage("addons/images/"+i+".png");
   }
 
@@ -38,74 +49,62 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noSmooth();
 
+  var myUrl = new URL (window.location.href);
+   karmaPoints = myUrl.searchParams.get("karma")*1;
+
+
   //Button To HOME
  button = createButton('HOME');
- button.position(width-200, 70);
+ button.position(200, ((((height-(width/2.35))/2)+(width/2.35))+70));
  button.mouseClicked(homy);
- button.addClass('button');
+ button.addClass('button1');
 
  //Button To back
 button = createButton('BACK');
-button.position(200, 70);
+button.position(200, ((((height-(width/2.35))/2))-70));
 button.mouseClicked(backy);
 button.addClass('button');
 
-//Button To choice1.1
-buttonC1e1 = createButton('SIDE WITH THE GOVERNMENT');
-buttonC1e1.position(300, (height/2)-200);
-buttonC1e1.mouseClicked(choicy1e1);
-buttonC1e1.addClass('buttonUsed');
-
-//Button To choice1.2
-buttonC1e2 = createButton('SIDE WITH THE PEOPLE');
-buttonC1e2.position(width-600, (height/2)-200);
-buttonC1e2.mouseClicked(choicy1e2);
-buttonC1e2.addClass('buttonUsed');
-
-//Button To choice2.1
-buttonC2e1 = createButton('SIDE WITH VICARY');
-buttonC2e1.position(300, (height/2)-200);
-buttonC2e1.mouseClicked(choicy2e1);
-buttonC2e1.addClass('buttonUsed');
-
-//Button To choice2.2
-buttonC2e2 = createButton('SIDE WITH WILFRID');
-buttonC2e2.position(width-600, (height/2)-200);
-buttonC2e2.mouseClicked(choicy2e2);
-buttonC2e2.addClass('buttonUsed');
-
-//Button To choice3.1
-buttonC3e1 = createButton('STAY BEHIND THE SCENES');
-buttonC3e1.position(300, (height/2)-200);
-buttonC3e1.mouseClicked(choicy3e1);
-buttonC3e1.addClass('buttonUsed');
-
-//Button To choice3.2
-buttonC3e2 = createButton('BE THE NEW LEADER');
-buttonC3e2.position(width-600, (height/2)-200);
-buttonC3e2.mouseClicked(choicy3e2);
-buttonC3e2.addClass('buttonUsed');
 
 }
 
 function draw() {
-  background("black");
-  console.log(timer1);
+  background("#000000");
+  console.log(karma);
 
-  fill('yellow');
+
+  //variabili posizione
+  var posY = ((width/2.2));
+  //variabili testo
+  var fontDes = gtMono;
+
+  //
+   fill('yellow');
   textAlign(CENTER);
   textFont(intlBol);
   textSize(50);
-  // text(click,width/2,50);
+   // text(click,width/2,50);
   // text(karma,width/2,height-50);
 
   if (click===0){
+
+    background("#001110");
     push();
-    fill('yellow');
-    textAlign(CENTER);
+    fill(pink);
+    textAlign(CENTER,CENTER);
     textFont(intlBol);
-    textSize(100);
+    textSize(50*(frameCount/120));
     text("click to start",width/2,height/2);
+    pop();
+
+    push();
+    fill(lime);
+    textAlign(CENTER,CENTER);
+    textFont(intlBol);
+    textSize(20);
+    text("THE AENEAS PROJECT",width/2,(height/2)-300);
+    textFont(intlMed);
+    text('"prologue"',width/2,(height/2)+300);
     pop();
   }
 
@@ -114,79 +113,24 @@ function draw() {
     imageMode(CENTER);
     image(imagesOk[1], windowWidth/2, windowHeight/2, width, width/2.35);
 
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,900,70);
-    pop();
-
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(20);
-    text("Earth, a barren, hostile wasteland. It is the result of millions of years of human occupation.",width/2,height/2);
-    pop();
   }
 
   if (click===2){
 
     imageMode(CENTER);
     image(imagesOk[2], windowWidth/2, windowHeight/2, width, width/2.35);
-
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,600,100);
-    pop();
-
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(20);
-    text("Life as it once was exists only in the stories of the survivors \nand echoes in the remains of their now abandoned cities, \nnow sad witnesses to the undisputed dominance of nature.",width/2,height/2);
-    pop();
   }
 
   if (click===3){
 
     imageMode(CENTER);
     image(imagesOk[3], windowWidth/2, windowHeight/2, width, width/2.35);
-
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,700,140);
-    pop();
-
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(20);
-    text("Humans are unwelcome guests, nomads of their own lands, \nsubmitted to the species they themselves have created. \nFaced with the inevitable, the only thing left for them to do is to survive. \nSome have found their strength in sharing, founding different tribes.",width/2,height/2);
-    pop();
   }
 
   if (click===4){
 
     imageMode(CENTER);
     image(imagesOk[4], windowWidth/2, windowHeight/2, width, width/2.35);
-
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,500,100);
-    pop();
-
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(20);
-    text("Others have abandoned everything, \nknowing that they can only trust themselves \nin a world that has proved to be too merciless.",width/2,height/2);
-    pop();
   }
 
   if (click===5){
@@ -194,19 +138,6 @@ function draw() {
     imageMode(CENTER);
     image(imagesOk[5], windowWidth/2, windowHeight/2, width, width/2.35);
 
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,500,100);
-    pop();
-
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(20);
-    text("Others have abandoned everything, \nknowing that they can only trust themselves \nin a world that has proved to be too merciless.",width/2,height/2);
-    pop();
   }
 
   if (click===6){
@@ -240,19 +171,7 @@ if (timer1>= -(width/2)) {
       }
     }
 
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,900,70);
-    pop();
 
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(30);
-    text("Away from here, a new life, a new hope, Mycenae.",width/2,height/2);
-    pop();
   }
 
 if (click===7) {
@@ -286,19 +205,7 @@ if (click===7) {
         }
       }
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,600,70);
-  pop();
 
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("Another land, abundant and flourishing, but just as threatening.",width/2,height/2);
-  pop();
 }
 
 if (click===8){
@@ -306,146 +213,45 @@ if (click===8){
   imageMode(CENTER);
   image(imagesOk[7], windowWidth/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,140);
-  pop();
 
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("A group of people, the chosen ones, have a new chance, \na chance to atone for their mistakes. \nUnder the guidance of one individual, a new colony is founded \nwithin a containment dome to protect themselves \nfrom the hostile environment they have invaded.",width/2,height/2);
-  pop();
 }
 
 if (click===9){
 
   imageMode(CENTER);
   image(imagesOk[8], windowWidth/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,80);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("The fear of repeating the mistakes of the past echoes \nin the choices of the new government.",width/2,height/2);
-  pop();
 }
 
 if (click===10){
 
   imageMode(CENTER);
   image(imagesOk[9], windowWidth/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,80);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("The life of each individual is finely calculated and organized, \nrobbed of all individual choice, constantly under observation.",width/2,height/2);
-  pop();
 }
 
 if (click===11){
 
   imageMode(CENTER);
   image(imagesOk[10], windowWidth/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,90);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("The people, locked up and deprived of all freedom, \nbegin to wonder who the real enemy is, the one outside the walls \nor the one they walk alongside every day.",width/2,height/2);
-  pop();
 }
 
 if (click===12){
 
   imageMode(CENTER);
   image(imagesOk[11], windowWidth/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,140);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("Some families have the privilege of contributing \nto the survival of the species, leaving their children, \nselected as prodigies and recruited for a special government program \nfor the training and education of tomorrow's leaders and scientists.",width/2,height/2);
-  pop();
 }
 
 if (click===13){
 
   imageMode(CENTER);
   image(imagesOk[12], windowWidth/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,140);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("The best scientists and governors of Mycenae \ncome from that Institute. \nIt takes sacrifice, dedication and reasoning to carry on \none's shoulders the fate of the entire human race.",width/2,height/2);
-  pop();
 }
+
+
 
 if (click===14){
 
   imageMode(CENTER);
-  image(imagesOk[13], windowWidth/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,700,140);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("The best scientists and governors of Mycenae \ncome from that Institute. \nIt takes sacrifice, dedication and reasoning to carry on \none's shoulders the fate of the entire human race.",width/2,height/2);
-  pop();
-}
-
-
-if (click===15){
-
-  imageMode(CENTER);
-  image(imagesOk[13], windowWidth/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[12], windowWidth/2, windowHeight/2, width, width/2.35);
 
 if (timer3<= (width/2)) {
   startingTimer3 = 1;
@@ -473,25 +279,12 @@ if (timer3<= (width/2)) {
     }
   }
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,900,70);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(30);
-  text("Sometimes, being a leader is not a choice. It’s about surviving.",width/2,height/2);
-  pop();
 }
 
-if (click===16) {
+if (click===15) {
 
   imageMode(CENTER);
-  image(imagesOk[13], windowWidth/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[12], windowWidth/2, windowHeight/2, width, width/2.35);
 
 if (timer4<= (width/2)) {
     startingTimer4 = 1;
@@ -519,38 +312,18 @@ if (timer4<= (width/2)) {
       }
     }
 
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,900,70);
-    pop();
+}
 
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(30);
-    text("Sometimes, being a leader is not a choice. It’s about surviving.",width/2,height/2);
-    pop();
+if (click===16) {
+  imageMode(CENTER);
+  image(imagesOk[48], width/2, windowHeight/2, width, width/2.35);
+
 }
 
 if (click===17) {
   imageMode(CENTER);
   image(imagesOk[15], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,600,70);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("And when it comes to surviving, every choice is legitimate.",width/2,height/2);
-  pop();
 }
 
 if (click===18) {
@@ -565,70 +338,36 @@ if (click===19) {
 
 if (click===20) {
   imageMode(CENTER);
-  image(imagesOk[18], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[49], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===21) {
-
   imageMode(CENTER);
-  image(imagesOk[19], width/2, windowHeight/2, width, width/2.35);
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,600,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are;",width/2,height/2);
-  pop();
+  image(imagesOk[18], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===22) {
 
   imageMode(CENTER);
-  image(imagesOk[20], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[19], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,600,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("In a world ruled by the most primitive instincts, \none has to choose his alliances wisely, \nand know who his enemies are;",width/2,height/2);
-  pop();
 }
 
 if (click===23) {
 
   imageMode(CENTER);
-  image(imagesOk[21], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[20], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,800,70);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("‘cause a good strategy makes the difference between life and death.",width/2,height/2);
-  pop();
 }
 
-if (click===24){
+if (click===24) {
+
+  imageMode(CENTER);
+  image(imagesOk[21], width/2, windowHeight/2, width, width/2.35);
+
+}
+
+if (click===25){
 
   imageMode(CENTER);
   image(imagesOk[21], windowWidth/2, windowHeight/2, width, width/2.35);
@@ -658,23 +397,9 @@ if (timer5>= -(width/2)) {
       pop();
     }
   }
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,70);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(30);
-  text("Sometimes even the tiniest spark is enough to trigger a revolution...",width/2,height/2);
-  pop();
 }
 
-if (click===25) {
+if (click===26) {
 
 imageMode(CENTER);
 image(imagesOk[21], windowWidth/2, windowHeight/2, width, width/2.35);
@@ -704,269 +429,168 @@ if (timer6>= -(width/2)) {
         pop();
       }
     }
-/*
-push();
-rectMode(CENTER,CENTER);
-fill('yellow');
-rect(width/2,height/2,600,70);
-pop();
 
-push();
-fill('black');
-textAlign(CENTER,CENTER);
-textFont(intlMed);
-textSize(20);
-text("Sometimes even the tiniest spark is enough to trigger a revolution...",width/2,height/2);
-pop();
-*/
 }
-if (click===26) {
+if (click===27) {
   imageMode(CENTER);
   image(imagesOk[23], width/2, windowHeight/2, width, width/2.35);
   push();
 }
 
-if (click===27) {
+if (click===28) {
   imageMode(CENTER);
   image(imagesOk[24], width/2, windowHeight/2, width, width/2.35);
 }
 
-if (click===28) {
+if (click===29) {
   imageMode(CENTER);
   image(imagesOk[25], width/2, windowHeight/2, width, width/2.35);
 }
 
-if (click===29) {
+if (click===30) {
   imageMode(CENTER);
   image(imagesOk[26], width/2, windowHeight/2, width, width/2.35);
 }
 
-if (click===30) {
+if (click===31) {
   imageMode(CENTER);
   image(imagesOk[27], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,600,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("...And some other times that single spark \nis capable of instilling the deepest of the doubts.",width/2,height/2);
-  pop();
-}
-
-if (click===31) {
-  imageMode(CENTER);
-  image(imagesOk[28], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===32) {
   imageMode(CENTER);
-  image(imagesOk[29], width/2, windowHeight/2, width, width/2.35);
-
-    push();
-    rectMode(CENTER,CENTER);
-    fill('yellow');
-    rect(width/2,height/2,1000,100);
-    pop();
-
-    push();
-    fill('black');
-    textAlign(CENTER,CENTER);
-    textFont(intlMed);
-    textSize(20);
-    text("One leak is enough to destroy an entire, perfect system; \nand when the external threat penetrated inside the dome, chaos ensued.",width/2,height/2);
-    pop();
+  image(imagesOk[28], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===33) {
   imageMode(CENTER);
-  image(imagesOk[30], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[29], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("One leak is enough to destroy an entire, perfect system; \nand when the external threat penetrated inside the dome, chaos ensued.",width/2,height/2);
-  pop();
 }
 
 if (click===34) {
   imageMode(CENTER);
-  image(imagesOk[31], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[30], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("One leak is enough to destroy an entire, perfect system; \nand when the external threat penetrated inside the dome, chaos ensued.",width/2,height/2);
-  pop();
 }
 
 if (click===35) {
   imageMode(CENTER);
-  image(imagesOk[32], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[31], width/2, windowHeight/2, width, width/2.35);
 
-  buttonC1e1.removeClass('buttonUsed');
-  buttonC1e1.addClass('button');
-  buttonC1e2.removeClass('buttonUsed');
-  buttonC1e2.addClass('button');
-
-  if(mouseX <= width/2) {
-    o1=0;
-    o2=200;
-  }else if (mouseX > width/2){
-    o1=200;
-    o2=0;
-  }
-  push();
-  rectMode(CENTER,CENTER);
-  fill(0,0,0,o1);
-  rect(0,height/2,width,height);
-  pop();
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill(0,0,0,o2);
-  rect(width,height/2,width,height);
-  pop();
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("But it is in the darkest of the moments that people \nmust choose between what is right and what is necessary.",width/2,height/2);
-  pop();
 }
 
 if (click===36) {
   imageMode(CENTER);
-  image(imagesOk[33], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[32], width/2, windowHeight/2, width, width/2.35);
+/*
+  buttonC1e1.removeClass('buttonUsed');
+  buttonC1e1.addClass('button');
+  buttonC1e2.removeClass('buttonUsed');
+  buttonC1e2.addClass('button');
+*/
+  if(mouseX <= width/2) {
+    o1=0;
+    o2=200;
+  }else if (mouseX > width/2){
+    o1=200;
+    o2=0;
+  }
+  push();
+  rectMode(CENTER,CENTER);
+  fill(0,0,0,o1);
+  rect(0,height/2,width,height);
+  pop();
+
+  push();
+  rectMode(CENTER,CENTER);
+  fill(0,0,0,o2);
+  rect(width,height/2,width,height);
+  pop();
+
+  push();
+  textAlign(CENTER,CENTER);
+  fill(lime);
+  textSize(textSize3);
+  textFont(fontDes);
+  text("AND YOU? WHICH SIDE WILL YOU JOIN?",width/2,((height-(width/2.35))/2)+(((width/2.35)/12)*1))
+  rectMode(CENTER,CENTER);
+  fill(blackblu);
+  rect(width/4,((height-(width/2.35))/2)+(((width/2.35)/12)*11),450,70);
+  rect((width/4)*3,((height-(width/2.35))/2)+(((width/2.35)/12)*11),500,70);
+  fill(pink);
+  text("side with the people",width/4,((height-(width/2.35))/2)+(((width/2.35)/12)*11));
+  text("side with the government",(width/4)*3,((height-(width/2.35))/2)+(((width/2.35)/12)*11));
+  pop();
+
 }
 
 if (click===37) {
   imageMode(CENTER);
-  image(imagesOk[34], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[33], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===38) {
   imageMode(CENTER);
-  image(imagesOk[35], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[34], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===39) {
   imageMode(CENTER);
-  image(imagesOk[36], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[35], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===40) {
   imageMode(CENTER);
-  image(imagesOk[37], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[36], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===41) {
   imageMode(CENTER);
-  image(imagesOk[38], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[37], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===42) {
   imageMode(CENTER);
-  image(imagesOk[39], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[38], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===43) {
   imageMode(CENTER);
-  image(imagesOk[40], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[39], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===44) {
   imageMode(CENTER);
-  image(imagesOk[41], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[40], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===45) {
   imageMode(CENTER);
-  image(imagesOk[32], width/2, windowHeight/2, width, width/2.35);
-
-  buttonC2e1.removeClass('buttonUsed');
-  buttonC2e1.addClass('button');
-  buttonC2e2.removeClass('buttonUsed');
-  buttonC2e2.addClass('button');
-
-  if(mouseX <= width/2) {
-    o1=0;
-    o2=200;
-  }else if (mouseX > width/2){
-    o1=200;
-    o2=0;
-  }
-  push();
-  rectMode(CENTER,CENTER);
-  fill(0,0,0,o1);
-  rect(0,height/2,width,height);
-  pop();
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill(0,0,0,o2);
-  rect(width,height/2,width,height);
-  pop();
-
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,100);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("When the line between right and necessary is blurred, \nwhat will be your choice?",width/2,height/2);
-  pop();
+  image(imagesOk[50], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===46) {
   imageMode(CENTER);
-  image(imagesOk[42], width/2, windowHeight/2, width, width/2.35);
+  image(imagesOk[51], width/2, windowHeight/2, width, width/2.35);
 }
 
 if (click===47) {
   imageMode(CENTER);
+  image(imagesOk[41], width/2, windowHeight/2, width, width/2.35);
+}
+
+if (click===48) {
+  imageMode(CENTER);
   image(imagesOk[32], width/2, windowHeight/2, width, width/2.35);
 
-  buttonC3e1.removeClass('buttonUsed');
-  buttonC3e1.addClass('button');
-  buttonC3e2.removeClass('buttonUsed');
-  buttonC3e2.addClass('button');
-
+/*
+  buttonC2e1.removeClass('buttonUsed');
+  buttonC2e1.addClass('button');
+  buttonC2e2.removeClass('buttonUsed');
+  buttonC2e2.addClass('button');
+*/
   if(mouseX <= width/2) {
     o1=0;
     o2=200;
@@ -987,26 +611,78 @@ if (click===47) {
   pop();
 
   push();
+  textAlign(CENTER,CENTER);
+  fill(lime);
+  textSize(textSize3);
+  textFont(fontDes);
+  text("WHO WILL BE YOUR ALLY?",width/2,((height-(width/2.35))/2)+(((width/2.35)/12)*1));
   rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,100);
+  fill(blackblu);
+  rect(width/4,((height-(width/2.35))/2)+(((width/2.35)/12)*11),400,70);
+  rect((width/4)*3,((height-(width/2.35))/2)+(((width/2.35)/12)*11),400,70);
+  fill(pink);
+  text("side with Wilfrid",width/4,((height-(width/2.35))/2)+(((width/2.35)/12)*11));
+  text("side with Vicary",(width/4)*3,((height-(width/2.35))/2)+(((width/2.35)/12)*11));
+  pop();
+
+}
+
+if (click===49) {
+  imageMode(CENTER);
+  image(imagesOk[42], width/2, windowHeight/2, width, width/2.35);
+}
+
+if (click===50) {
+  imageMode(CENTER);
+  image(imagesOk[32], width/2, windowHeight/2, width, width/2.35);
+/*
+  buttonC3e1.removeClass('buttonUsed');
+  buttonC3e1.addClass('button');
+  buttonC3e2.removeClass('buttonUsed');
+  buttonC3e2.addClass('button');
+*/
+  if(mouseX <= width/2) {
+    o1=0;
+    o2=200;
+  }else if (mouseX > width/2){
+    o1=200;
+    o2=0;
+  }
+  push();
+  rectMode(CENTER,CENTER);
+  fill(0,0,0,o1);
+  rect(0,height/2,width,height);
   pop();
 
   push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(20);
-  text("When all hope seems lost, \nwill you fight for your beliefs?",width/2,height/2);
+  rectMode(CENTER,CENTER);
+  fill(0,0,0,o2);
+  rect(width,height/2,width,height);
   pop();
+
+  push();
+  textAlign(CENTER,CENTER);
+  fill(lime);
+  textSize(textSize3);
+  textFont(fontDes);
+  text("PEOPLE NEED A LEADER! WHAT WILL YOU DO?",width/2,((height-(width/2.35))/2)+(((width/2.35)/12)*1));
+  rectMode(CENTER,CENTER);
+  fill(blackblu);
+  rect(width/4,((height-(width/2.35))/2)+(((width/2.35)/12)*11),450,70);
+  rect((width/4)*3,((height-(width/2.35))/2)+(((width/2.35)/12)*11),400,70);
+  fill(pink);
+  text("stay behind the scenes",width/4,((height-(width/2.35))/2)+(((width/2.35)/12)*11));
+  text("be the new leader",(width/4)*3,((height-(width/2.35))/2)+(((width/2.35)/12)*11));
+  pop();
+
 }
 
-if (click===48) {
+if (click===51) {
   imageMode(CENTER);
   image(imagesOk[43], width/2, windowHeight/2, width, width/2.35);
 }
 
-if (click===49) {
+if (click===52) {
   imageMode(CENTER);
   image(imagesOk[43], width/2, windowHeight/2, width, width/2.35);
 
@@ -1035,80 +711,31 @@ if (click===49) {
           pop();
         }
 
-        push();
-        rectMode(CENTER,CENTER);
-        fill('yellow');
-        rect(width/2,height/2,1000,70);
-        pop();
-
-        push();
-        fill('black');
-        textAlign(CENTER,CENTER);
-        textFont(intlMed);
-        textSize(30);
-        text("Take your time to make the right decisions,",width/2,height/2);
-        pop();
         }
 }
 
-if (click===50) {
+if (click===53) {
   imageMode(CENTER);
   image(imagesOk[45], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,120);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(30);
-  text("because every choice echoes in your own path, \nand in that of others.",width/2,height/2);
-  pop();
 }
 
-if (click===51) {
+if (click===54) {
   imageMode(CENTER);
   image(imagesOk[46], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,120);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(30);
-  text("When you’re facing those consequences \nand your time comes to fight for your destiny",width/2,height/2);
-  pop();
 }
 
-if (click===52) {
+if (click===55) {
   imageMode(CENTER);
   image(imagesOk[47], width/2, windowHeight/2, width, width/2.35);
 
-  push();
-  rectMode(CENTER,CENTER);
-  fill('yellow');
-  rect(width/2,height/2,1000,70);
-  pop();
-
-  push();
-  fill('black');
-  textAlign(CENTER,CENTER);
-  textFont(intlMed);
-  textSize(40);
-  text("Will you take that last call?",width/2,height/2);
-  pop();
 }
 
-if (click===53) {
+if (click===56) {
+window.open("index0.html?karmaPoints=" +(karma), "_self");
+
+/*
   end = 1;
 }
 
@@ -1131,12 +758,41 @@ if (end===1) {
     textSize(50);
     text("ANTHROPOCENTRIC POINT OF VIEW",width/2,height/2);
   }
+  */
 }
+
+
 //PARENTESI FINE DRAW
 }
 
 function mouseClicked() {
   click++;
+  let fs = fullscreen();
+     fullscreen(!click-1);
+
+  if (click===37){
+    if(mouseX <= width/2) {
+        karma = karma +1;
+    }else if (mouseX > width/2){
+        karma = karma -1;
+    }
+  }
+
+  if (click===49){
+    if(mouseX <= width/2) {
+        karma = karma +2;
+    }else if (mouseX > width/2){
+        karma = karma -2;
+    }
+  }
+
+  if (click===51){
+    if(mouseX <= width/2) {
+        karma = karma +2;
+    }else if (mouseX > width/2){
+        karma = karma -2;
+    }
+  }
 }
 
 function homy() {
@@ -1150,53 +806,6 @@ function backy() {
   // window.open();
 }
 
-function choicy1e1() {
-  karma = karma +1;
-  buttonC1e1.removeClass('button');
-  buttonC1e1.addClass('buttonUsed');
-  buttonC1e2.removeClass('button');
-  buttonC1e2.addClass('buttonUsed');
-}
-
-function choicy1e2() {
-  karma = karma -1;
-  buttonC1e1.removeClass('button');
-  buttonC1e1.addClass('buttonUsed');
-  buttonC1e2.removeClass('button');
-  buttonC1e2.addClass('buttonUsed');
-}
-
-function choicy2e1() {
-  karma = karma +2;
-  buttonC2e1.removeClass('button');
-  buttonC2e1.addClass('buttonUsed');
-  buttonC2e2.removeClass('button');
-  buttonC2e2.addClass('buttonUsed');
-}
-
-function choicy2e2() {
-  karma = karma -2;
-  buttonC2e1.removeClass('button');
-  buttonC2e1.addClass('buttonUsed');
-  buttonC2e2.removeClass('button');
-  buttonC2e2.addClass('buttonUsed');
-}
-
-function choicy3e1() {
-  karma = karma +2;
-  buttonC3e1.removeClass('button');
-  buttonC3e1.addClass('buttonUsed');
-  buttonC3e2.removeClass('button');
-  buttonC3e2.addClass('buttonUsed');
-}
-
-function choicy3e2() {
-  karma = karma -2;
-  buttonC3e1.removeClass('button');
-  buttonC3e1.addClass('buttonUsed');
-  buttonC3e2.removeClass('button');
-  buttonC3e2.addClass('buttonUsed');
-}
 
 function windowResized() {
   resizeCanvas(windowWidth,windowHeight);

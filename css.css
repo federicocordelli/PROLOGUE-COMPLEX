@@ -4,7 +4,7 @@ css document
 */
 
 .button {
-  background-color: yellow; /* Green */
+  background-color: #f56c63; /* Green */
   border: 1px solid black;
   color: black;
   padding: 10px 15px;
@@ -41,6 +41,48 @@ css document
   font-size: 15px;
   border-radius: 12%;
 }
+
+.button1 {
+  background-color: black; /* Green */
+  border: 1px solid #f56c63;
+  color: #f56c63;
+  padding: 10px 15px;
+  font-family: SuisseIntl-Bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12%;
+}
+
+.button1:hover {
+  background-color: #f56c63; /* Green */
+  border: 1px solid #F8F1DB;
+  color: #F8F1DB;
+  padding: 10px 15px;
+  font-family: SuisseIntl-Bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12%;
+}
+
+.button1:active {
+  background-color: #F8F1DB; /* Green */
+  border: 1px solid black;
+  color: black;
+  padding: 10px 15px;
+  font-family: SuisseIntl-Bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12%;
+}
+
+
+
 
 .buttonUsed {
   background-color: #FF0000; /* Green */
